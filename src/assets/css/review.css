@@ -382,6 +382,16 @@
   margin-top: 1.2rem;
 }
 
+.pull-quote-attr {
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
 /* ── FILM SECTION DIVIDER ───────────────────────────── */
 .film-section {
   margin-top: 4rem;

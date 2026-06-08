@@ -338,7 +338,7 @@
     "slug": "kitano",
     "ghostLetter": "K",
     "season": 12,
-    "isCurrent": true,
+    "isCurrent": false,
     "born": "Jan 18, 1947",
     "origin": "Tokyo, Japan",
     "nationality": "Japanese",
@@ -369,6 +369,34 @@
       { "year": 2024, "title": "Broken Rage", "genre": "Crime · Comedy", "pick": false }
     ],
     "picks": ["violent-cop", "dolls"]
+  },
+  "davies": {
+    "name": "Terence Davies",
+    "firstName": "Terence",
+    "lastName": "Davies",
+    "slug": "davies",
+    "ghostLetter": "D",
+    "season": 13,
+    "isCurrent": true,
+    "born": "Nov 10, 1945",
+    "origin": "Liverpool, England",
+    "nationality": "British",
+    "active": "1988 – 2021",
+    "features": 9,
+    "bio": "Terence Davies was one of British cinema's most singular and underappreciated voices — a filmmaker whose work was so deeply personal that it could feel less like watching a film than overhearing a confession. From his 1988 debut, Distant Voices, Still Lives, through his final feature, Benediction (2021), he made films about memory, longing, and the weight of the past on the present. His visual style drew heavily on theatre and painting: carefully composed frames, deliberate pacing, and an attention to light and atmosphere that prioritised mood over momentum. Davies was drawn to women of intelligence and independence placed inside systems that had no use for either — and he rendered their inner lives with an empathy and precision that is rare in any cinema. His films are not easy and they are not fast, but they are entirely his own.",
+    "themes": ["Memory and Loss", "Repression", "Female Interiority", "Class and Constraint", "The Past as Prison"],
+    "filmography": [
+      { "year": 1988, "title": "Distant Voices, Still Lives", "genre": "Drama", "pick": false },
+      { "year": 1992, "title": "The Long Day Closes", "genre": "Drama", "pick": false },
+      { "year": 1995, "title": "The Neon Bible", "genre": "Drama", "pick": false },
+      { "year": 2000, "title": "The House of Mirth", "genre": "Drama", "pick": false, "awards": [{ "type": "bafta", "status": "nom" }] },
+      { "year": 2008, "title": "Of Time and the City", "genre": "Documentary", "pick": false },
+      { "year": 2011, "title": "The Deep Blue Sea", "genre": "Drama · Romance", "pick": true, "slug": "the-deep-blue-sea", "awards": [{ "type": "globe", "status": "nom" }] },
+      { "year": 2015, "title": "Sunset Song", "genre": "Drama", "pick": false },
+      { "year": 2016, "title": "A Quiet Passion", "genre": "Biography · Drama", "pick": true, "slug": "a-quiet-passion" },
+      { "year": 2021, "title": "Benediction", "genre": "Biography · Drama", "pick": false }
+    ],
+    "picks": ["the-deep-blue-sea", "a-quiet-passion"]
   },
   "archive": [
     {
