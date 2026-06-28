@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agadrapin/bfc.git"
+    "url": "git+https://github.com/agadrap/bfc.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/agadrapin/bfc/issues"
+    "url": "https://github.com/agadrap/bfc/issues"
   },
-  "homepage": "https://github.com/agadrapin/bfc#readme",
+  "homepage": "https://github.com/agadrap/bfc#readme",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2"
   }
