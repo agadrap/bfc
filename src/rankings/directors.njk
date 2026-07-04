@@ -21,319 +21,34 @@ permalink: /rankings/directors/
 
 <!-- ═══ LEADERBOARD ═════════════════════════════════════ -->
 <section class="leaderboard">
-
-  <!-- #1 — Polański -->
-  <div class="leaderboard-row" data-director="polanski">
-    <div class="rank-num">1</div>
+{% for d in collections.directorRankings %}
+  {%- set meta = directors[d.slug] %}
+  <!-- #{{ d.rank }} — {{ meta.lastName }} -->
+  <div class="leaderboard-row" data-director="{{ d.slug }}">
+    <div class="rank-num">{{ d.rank }}</div>
     <div class="row-body">
-      <div class="row-name">ROMAN POLAŃSKI</div>
+      <div class="row-name">{{ meta.name | upper }}</div>
       <div class="row-meta">
-        <span class="row-meta-item">Season 06</span>
-        <span class="row-meta-item">Polish-French</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
+        <span class="row-meta-item">Season {{ meta.season | pad(2) }}</span>
+        <span class="row-meta-item">{{ meta.nationality }}</span>
+        <span class="row-meta-item">{{ d.count }} Film{% if d.count != 1 %}s{% endif %} Reviewed</span>
       </div>
       <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-1" data-width="86.7"></div>
+        <div class="score-bar-fill {{ d.fillClass }}" data-width="{{ d.width }}"></div>
       </div>
       <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 4.5</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 4.5</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 4.0</span>
+        <span class="sub-score a"><span class="sub-score-dot"></span> A: {{ d.a }}</span>
+        <span class="sub-score e"><span class="sub-score-dot"></span> E: {{ d.e }}</span>
+        <span class="sub-score r"><span class="sub-score-dot"></span> R: {{ d.r }}</span>
       </div>
-      <a href="/directors/polanski/" class="row-link">View director →</a>
+      <a href="/directors/{{ d.slug }}/" class="row-link">View director →</a>
     </div>
     <div class="row-score">
-      <div class="row-score-num">13.0</div>
+      <div class="row-score-num">{{ d.total }}</div>
       <div class="row-score-max">/ 15</div>
     </div>
   </div>
-
-  <!-- #2 — von Trier -->
-  <div class="leaderboard-row" data-director="vontrier">
-    <div class="rank-num">2</div>
-    <div class="row-body">
-      <div class="row-name">LARS VON TRIER</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 08</span>
-        <span class="row-meta-item">Danish</span>
-        <span class="row-meta-item">3 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-2" data-width="80.0"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 3.7</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 4.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 4.3</span>
-      </div>
-      <a href="/directors/vontrier/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">12.0</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #3 — Anderson -->
-  <div class="leaderboard-row" data-director="anderson">
-    <div class="rank-num">3</div>
-    <div class="row-body">
-      <div class="row-name">PAUL THOMAS ANDERSON</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 05</span>
-        <span class="row-meta-item">American</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-3" data-width="76.7"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 3.5</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 4.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 4.0</span>
-      </div>
-      <a href="/directors/anderson/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">11.5</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #4 — Bong -->
-  <div class="leaderboard-row" data-director="bong">
-    <div class="rank-num">4</div>
-    <div class="row-body">
-      <div class="row-name">BONG JOON-HO</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 01</span>
-        <span class="row-meta-item">South Korean</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-4" data-width="76.7"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 4.0</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 4.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 3.5</span>
-      </div>
-      <a href="/directors/bong/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">11.5</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #5 — Refn -->
-  <div class="leaderboard-row" data-director="refn">
-    <div class="rank-num">5</div>
-    <div class="row-body">
-      <div class="row-name">NICOLAS WINDING REFN</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 10</span>
-        <span class="row-meta-item">Danish</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-5" data-width="76.7"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 4.5</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 4.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 3.0</span>
-      </div>
-      <a href="/directors/refn/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">11.5</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #6 — Meadows -->
-  <div class="leaderboard-row" data-director="meadows">
-    <div class="rank-num">6</div>
-    <div class="row-body">
-      <div class="row-name">SHANE MEADOWS</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 04</span>
-        <span class="row-meta-item">British</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-6" data-width="73.3"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 3.5</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 4.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 3.5</span>
-      </div>
-      <a href="/directors/meadows/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">11.0</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #7 — Linklater -->
-  <div class="leaderboard-row" data-director="linklater">
-    <div class="rank-num">7</div>
-    <div class="row-body">
-      <div class="row-name">RICHARD LINKLATER</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 07</span>
-        <span class="row-meta-item">American</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-5" data-width="70.0"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 3.0</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 3.5</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 4.0</span>
-      </div>
-      <a href="/directors/linklater/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">10.5</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #8 — Davies -->
-  <div class="leaderboard-row" data-director="davies">
-    <div class="rank-num">8</div>
-    <div class="row-body">
-      <div class="row-name">TERENCE DAVIES</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 13</span>
-        <span class="row-meta-item">British</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-5" data-width="70.0"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 3.5</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 3.5</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 3.5</span>
-      </div>
-      <a href="/directors/davies/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">10.5</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #9 — Coen -->
-  <div class="leaderboard-row" data-director="coen">
-    <div class="rank-num">9</div>
-    <div class="row-body">
-      <div class="row-name">JOEL & ETHAN COEN</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 02</span>
-        <span class="row-meta-item">American</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-6" data-width="63.3"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 2.0</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 4.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 3.5</span>
-      </div>
-      <a href="/directors/coen/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">9.5</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #10 — Lynch -->
-  <div class="leaderboard-row" data-director="lynch">
-    <div class="rank-num">10</div>
-    <div class="row-body">
-      <div class="row-name">DAVID LYNCH</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 09</span>
-        <span class="row-meta-item">American</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-7" data-width="53.3"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 3.0</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 2.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 3.0</span>
-      </div>
-      <a href="/directors/lynch/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">8.0</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #11 — Haneke -->
-  <div class="leaderboard-row" data-director="haneke">
-    <div class="rank-num">11</div>
-    <div class="row-body">
-      <div class="row-name">MICHAEL HANEKE</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 03</span>
-        <span class="row-meta-item">Austrian</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-7" data-width="53.3"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 4.0</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 1.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 3.0</span>
-      </div>
-      <a href="/directors/haneke/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">8.0</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
-  <!-- #12 — Kitano -->
-  <div class="leaderboard-row" data-director="kitano">
-    <div class="rank-num">12</div>
-    <div class="row-body">
-      <div class="row-name">TAKESHI KITANO</div>
-      <div class="row-meta">
-        <span class="row-meta-item">Season 12</span>
-        <span class="row-meta-item">Japanese</span>
-        <span class="row-meta-item">2 Films Reviewed</span>
-      </div>
-      <div class="score-bar-wrap">
-        <div class="score-bar-fill rank-7" data-width="50.0"></div>
-      </div>
-      <div class="sub-scores">
-        <span class="sub-score a"><span class="sub-score-dot"></span> A: 2.0</span>
-        <span class="sub-score e"><span class="sub-score-dot"></span> E: 3.0</span>
-        <span class="sub-score r"><span class="sub-score-dot"></span> R: 2.5</span>
-      </div>
-      <a href="/directors/kitano/" class="row-link">View director →</a>
-    </div>
-    <div class="row-score">
-      <div class="row-score-num">7.5</div>
-      <div class="row-score-max">/ 15</div>
-    </div>
-  </div>
-
+{% endfor %}
 </section>
 
 <script>
