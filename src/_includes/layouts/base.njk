@@ -3,7 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title %}{{ title }} — {% endif %}{{ site.name }}</title>
+
+  {# Resolve director data if the page front-matter names one #}
+  {% if directorSlug %}{% set dir = directors[directorSlug] %}{% endif %}
+
+  {# Page title: reviews use film.title (properly cased), not the ALL-CAPS `title` #}
+  {% set pageTitle = film.title if film else title %}
+  <title>{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}</title>
+
+  {# Canonical — matches sitemap.njk: {{ site.url }}{{ page.url }} #}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  {# Meta description: front-matter override, else per-page-type fallback #}
+  {% if description %}
+    {% set metaDesc = description %}
+  {% elif film %}
+    {% set metaDesc = dir.name + "'s " + film.title + " (" + (film.year | string) + ") — " + (film.genres | join(", ")) + ". Reviewed at " + site.name + "." %}
+  {% elif dir %}
+    {% set metaDesc = dir.bio | truncate(155) %}
+  {% elif page.url == "/rankings/films/" %}
+    {% set metaDesc = "Every film reviewed at " + site.name + ", ranked by Club Rating." %}
+  {% elif page.url == "/rankings/directors/" %}
+    {% set metaDesc = "Every director covered at " + site.name + ", ranked by average Club Rating." %}
+  {% elif page.url == "/archive/" %}
+    {% set metaDesc = "The complete archive of " + site.name + " reviews, organised by season and director." %}
+  {% elif page.url == "/about/" %}
+    {% set metaDesc = "About " + site.name + " — " + site.tagline + "." %}
+  {% else %}
+    {% set metaDesc = site.name + " — " + site.tagline + "." %}
+  {% endif %}
+  <meta name="description" content="{{ metaDesc }}">
+
+  {# Open Graph + Twitter #}
+  {% set ogType = "article" if film else "website" %}
+  {% set ogImage = image or "/assets/images/bayley.jpg" %}
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:type" content="{{ ogType }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:title" content="{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}">
+  <meta property="og:description" content="{{ metaDesc }}">
+  <meta property="og:image" content="{{ site.url }}{{ ogImage }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}">
+  <meta name="twitter:description" content="{{ metaDesc }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ ogImage }}">
+
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/assets/css/global.css">
   {% block styles %}{% endblock %}
