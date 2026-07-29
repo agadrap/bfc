@@ -1,3 +1,57 @@
+const { execFileSync } = require("child_process");
+const fs = require("fs");
+const path = require("path");
+
+const gitDateCache = new Map();
+function gitLastModified(inputPath) {
+  if (!inputPath) return null;
+  const abs = path.resolve(inputPath);
+  if (gitDateCache.has(abs)) return gitDateCache.get(abs);
+  let iso = null;
+  try {
+    const out = execFileSync(
+      "git",
+      ["log", "-1", "--format=%cI", "--", abs],
+      { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }
+    ).trim();
+    if (out) iso = out;
+  } catch (_) {}
+  gitDateCache.set(abs, iso);
+  return iso;
+}
+
+let reviewPathsCache = null;
+function reviewSourcePaths() {
+  if (reviewPathsCache) return reviewPathsCache;
+  const root = path.resolve("src/directors");
+  const out = [];
+  for (const dir of fs.readdirSync(root, { withFileTypes: true })) {
+    if (!dir.isDirectory()) continue;
+    const sub = path.join(root, dir.name);
+    for (const f of fs.readdirSync(sub)) {
+      if (f.endsWith(".md")) out.push(path.join(sub, f));
+    }
+  }
+  reviewPathsCache = out;
+  return out;
+}
+
+function maxGitDate(paths) {
+  let maxTs = -Infinity;
+  let maxIso = null;
+  for (const p of paths) {
+    const d = gitLastModified(p);
+    if (!d) continue;
+    const t = Date.parse(d);
+    if (Number.isFinite(t) && t > maxTs) { maxTs = t; maxIso = d; }
+  }
+  return maxIso;
+}
+
+// Ranking pages aggregate every review, so their freshness is the newest
+// review edit — not the template's own mtime.
+const RANKING_URLS = new Set(["/rankings/films/", "/rankings/directors/"]);
+
 module.exports = function(eleventyConfig) {
   // Pass through static assets
   eleventyConfig.addPassthroughCopy("src/assets/css");
@@ -120,6 +174,19 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("totalRating", total);
+
+  // Git-derived last-modified ISO string for sitemap <lastmod>.
+  // Falls back to the page's own date so per-deploy timestamps never leak in.
+  eleventyConfig.addFilter("lastmod", function(page) {
+    if (page && RANKING_URLS.has(page.url)) {
+      const iso = maxGitDate([page.inputPath, ...reviewSourcePaths()]);
+      if (iso) return iso;
+    }
+    const iso = gitLastModified(page && page.inputPath);
+    if (iso) return iso;
+    if (page && page.date) return new Date(page.date).toISOString();
+    return null;
+  });
 
   // Directors data object → array sorted by season (for the filter bar).
   eleventyConfig.addFilter("bySeason", function(directorsData) {

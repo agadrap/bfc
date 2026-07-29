@@ -5,8 +5,12 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for page in collections.all %}
+{%- set lm = page | lastmod %}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
+    {%- if lm %}
+    <lastmod>{{ lm }}</lastmod>
+    {%- endif %}
   </url>
 {%- endfor %}
 </urlset>
