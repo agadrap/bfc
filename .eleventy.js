@@ -36,6 +36,61 @@ function reviewSourcePaths() {
   return out;
 }
 
+// Walk _includes once, parse each .njk for `extends` / `include`, and compute
+// the transitive dependency set for every template. Used so a page's lastmod
+// reflects edits to base.njk, partials, etc. — not just its own source file.
+let layoutDepsCache = null;
+function layoutDeps() {
+  if (layoutDepsCache) return layoutDepsCache;
+  const root = path.resolve("src/_includes");
+  const files = [];
+  (function walk(dir) {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith(".njk")) files.push(p);
+    }
+  })(root);
+
+  const RE = /\{%\s*(?:extends|include)\s+["']([^"']+)["']/g;
+  const direct = new Map();
+  for (const f of files) {
+    const src = fs.readFileSync(f, "utf8");
+    const set = new Set();
+    let m;
+    while ((m = RE.exec(src)) !== null) {
+      set.add(path.resolve(root, m[1]));
+    }
+    direct.set(f, set);
+  }
+
+  const cache = new Map();
+  function trans(f, seen) {
+    if (cache.has(f)) return cache.get(f);
+    if (seen.has(f)) return new Set();
+    seen.add(f);
+    const out = new Set([f]);
+    for (const dep of direct.get(f) || []) {
+      for (const t of trans(dep, seen)) out.add(t);
+    }
+    seen.delete(f);
+    cache.set(f, out);
+    return out;
+  }
+  const result = new Map();
+  for (const f of files) result.set(f, trans(f, new Set()));
+  layoutDepsCache = result;
+  return result;
+}
+
+function templateDeps(page) {
+  const layout = page && page.data && page.data.layout;
+  if (!layout) return [];
+  const layoutPath = path.resolve("src/_includes", layout);
+  const deps = layoutDeps().get(layoutPath);
+  return deps ? [...deps] : [layoutPath];
+}
+
 function maxGitDate(paths) {
   let maxTs = -Infinity;
   let maxIso = null;
@@ -176,13 +231,18 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("totalRating", total);
 
   // Git-derived last-modified ISO string for sitemap <lastmod>.
-  // Falls back to the page's own date so per-deploy timestamps never leak in.
+  // Takes the newest commit date across: the page source, every layout/partial
+  // it renders through, and (for rankings) every review it aggregates. A base
+  // layout edit therefore bumps every page — the rendered output really did
+  // change — while a single-review edit only bumps that one page.
   eleventyConfig.addFilter("lastmod", function(page) {
+    const paths = new Set();
+    if (page && page.inputPath) paths.add(page.inputPath);
+    for (const p of templateDeps(page)) paths.add(p);
     if (page && RANKING_URLS.has(page.url)) {
-      const iso = maxGitDate([page.inputPath, ...reviewSourcePaths()]);
-      if (iso) return iso;
+      for (const p of reviewSourcePaths()) paths.add(p);
     }
-    const iso = gitLastModified(page && page.inputPath);
+    const iso = maxGitDate(paths);
     if (iso) return iso;
     if (page && page.date) return new Date(page.date).toISOString();
     return null;
