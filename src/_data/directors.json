@@ -405,7 +405,7 @@
     "slug": "eastwood",
     "ghostLetter": "E",
     "season": 14,
-    "isCurrent": true,
+    "isCurrent": false,
     "born": "May 31, 1930",
     "origin": "San Francisco, USA",
     "nationality": "American",
@@ -456,6 +456,30 @@
       { "year": 2024, "title": "Juror #2", "genre": "Crime · Thriller", "pick": false }
     ],
     "picks": ["a-perfect-world", "mystic-river"]
+  },
+  "ramsay": {
+    "name": "Lynne Ramsay",
+    "firstName": "Lynne",
+    "lastName": "Ramsay",
+    "slug": "ramsay",
+    "ghostLetter": "R",
+    "season": 15,
+    "isCurrent": true,
+    "born": "Dec 5, 1969",
+    "origin": "Glasgow, Scotland",
+    "nationality": "Scottish",
+    "active": "1999 – Present",
+    "features": 5,
+    "bio": "Lynne Ramsay is one of the most exacting visual stylists in contemporary British cinema — a director who has spent a career, active since 1999, building images before she builds plot. Working slowly and rarely, she has released only a handful of features in over two decades, and each one arrives fully formed: dense with texture, sound, and a kind of sensory intelligence that resists conventional exposition. Ramsay is drawn to outsiders and the people who fail them — children abandoned by circumstance, mothers undone by what their children become, men undone by what they could not prevent. Her films move by association rather than plot mechanics, trusting image and rhythm to carry meaning that dialogue never states outright. The result is cinema that lingers in the body as much as the mind.",
+    "themes": ["Grief and Memory", "Childhood and Lost Innocence", "Alienation", "Motherhood", "Guilt"],
+    "filmography": [
+      { "year": 1999, "title": "Ratcatcher", "genre": "Drama", "pick": true, "slug": "ratcatcher", "awards": [{ "type": "bafta", "status": "won" }] },
+      { "year": 2002, "title": "Morvern Callar", "genre": "Drama", "pick": true, "slug": "morvern-callar" },
+      { "year": 2011, "title": "We Need to Talk About Kevin", "genre": "Drama · Thriller", "pick": true, "slug": "we-need-to-talk-about-kevin", "awards": [{ "type": "palme", "status": "nom" }, { "type": "bafta", "status": "nom" }, { "type": "globe", "status": "nom" }] },
+      { "year": 2017, "title": "You Were Never Really Here", "genre": "Crime · Thriller", "pick": false, "awards": [{ "type": "palme", "status": "nom" }] },
+      { "year": 2025, "title": "Die My Love", "genre": "Drama", "pick": false, "awards": [{ "type": "palme", "status": "nom" }] }
+    ],
+    "picks": ["ratcatcher", "morvern-callar", "we-need-to-talk-about-kevin"]
   },
   "archive": [
     {

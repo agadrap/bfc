@@ -15,3 +15,9 @@ _site/
 # Environment
 .env
 .env.local
+
+# Claude context (local only, not versioned)
+CLAUDE.md
+
+# Staged/future seasons — not ready to publish, never versioned
+limbo/
