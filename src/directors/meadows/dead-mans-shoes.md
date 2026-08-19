@@ -15,6 +15,7 @@ film:
   country: UK
   genres: ["Thriller", "Drama"]
   tagline: "God will forgive them. He'll forgive them and allow them into heaven. I can't live with that."
+  poster: /assets/posters/04_dead-mans-shoes-2004-poster.png
 season:
   number: 4
   position: 2

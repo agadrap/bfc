@@ -15,6 +15,7 @@ film:
   country: Japan
   genres: ["Crime", "Drama"]
   tagline: "That man, being violent."
+  poster: /assets/posters/12_violent-cop-1989-poster.png
 season:
   number: 12
   position: 1

@@ -14,6 +14,7 @@ film:
   country: France
   genres: ["Thriller", "Drama"]
   tagline: "You are being watched."
+  poster: /assets/posters/03_cache-2005-poster.png
 season:
   number: 3
   position: 1

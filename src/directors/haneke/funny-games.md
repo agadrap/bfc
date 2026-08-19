@@ -15,6 +15,7 @@ film:
   country: Austria
   genres: ["Thriller", "Horror"]
   tagline: "A third of the audience left at Cannes. He made it again anyway."
+  poster: /assets/posters/03_funny-games-1997-poster.png
 season:
   number: 3
   position: 2

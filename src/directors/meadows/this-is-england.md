@@ -15,6 +15,7 @@ film:
   country: UK
   genres: ["Drama", "Crime"]
   tagline: "A story about belonging — and what it costs."
+  poster: /assets/posters/04_this-is-england-2006-poster.png
 season:
   number: 4
   position: 1

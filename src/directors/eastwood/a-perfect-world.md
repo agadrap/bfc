@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Crime", "Drama"]
   tagline: "Good, bad — and how often it lands somewhere in between."
+  poster: /assets/posters/14_a-perfect-world-1993-poster.png
 season:
   number: 14
   position: 1

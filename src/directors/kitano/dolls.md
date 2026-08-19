@@ -14,6 +14,7 @@ film:
   country: Japan
   genres: ["Drama", "Romance"]
   tagline: "Three stories. No easy answers."
+  poster: /assets/posters/12_dolls-2002-poster.png
 season:
   number: 12
   position: 2

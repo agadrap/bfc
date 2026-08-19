@@ -1,0 +1,35 @@
+{# JSON-LD Review block. Every field is derived from the page's frontmatter
+   or _data/directors.json — no hardcoded per-film values. The </script>
+   sequence in verdict text is escaped to avoid terminating this block. #}
+{% set dir = directors[directorSlug] %}
+{% set countries = film.country.split(" / ") %}
+{% set countryJson = [] %}
+{% for c in countries %}
+  {% set countryJson = (countryJson.push({ "@type": "Country", "name": c }), countryJson) %}
+{% endfor %}
+{% set verdictClean = (ratings.verdict or "") | replace("</script>", "<\\/script>") %}
+{% set jsonld = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "url": site.url + page.url,
+  "name": film.title + " (" + (film.year | string) + ") — reviewed by " + site.name,
+  "itemReviewed": {
+    "@type": "Movie",
+    "name": film.title,
+    "image": site.url + film.poster,
+    "dateCreated": film.year | string,
+    "director": { "@type": "Person", "name": dir.name },
+    "genre": film.genres,
+    "countryOfOrigin": countryJson
+  },
+  "author": { "@type": "Organization", "name": site.name, "url": site.url + "/" },
+  "publisher": { "@type": "Organization", "name": site.name },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": ratings | totalRating,
+    "bestRating": 15,
+    "worstRating": 0
+  },
+  "reviewBody": verdictClean
+} %}
+<script type="application/ld+json">{{ jsonld | dump | safe }}</script>

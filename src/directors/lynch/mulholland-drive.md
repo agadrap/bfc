@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Mystery", "Drama"]
   tagline: "A love story in the city of dreams."
+  poster: /assets/posters/09_mulholland-drive-2001-poster.png
 season:
   number: 9
   position: 1

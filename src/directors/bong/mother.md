@@ -14,6 +14,7 @@ film:
   country: South Korea
   genres: ["Crime", "Drama"]
   tagline: "A mother's love knows no bounds. That's the problem."
+  poster: /assets/posters/01_mother-2009-poster.png
 season:
   number: 1
   position: 2

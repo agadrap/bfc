@@ -14,6 +14,7 @@ film:
   country: UK
   genres: ["Drama"]
   tagline: "Waiting for the keys to a different life."
+  poster: /assets/posters/15_ratcatcher-1999-poster.png
 season:
   number: 15
   position: 1

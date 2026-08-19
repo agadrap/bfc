@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Drama", "Epic"]
   tagline: "He has a competition in him that he cannot leave alone."
+  poster: /assets/posters/05_there-will-be-blood-2007-poster.png
 season:
   number: 5
   position: 1

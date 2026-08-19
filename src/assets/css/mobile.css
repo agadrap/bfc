@@ -112,6 +112,11 @@
         font-size: 1.1rem;
     }
 
+    .nav-mark {
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+
     /* ════════════════════════════════════════════
        LANDING PAGE
        Hero: name + film switcher below, buttons side-by-side
@@ -237,7 +242,7 @@
         display: none;
     }
 
-    /* ── PICKS: horizontal carousel, no excerpts ─────────── */
+    /* ── PICKS: horizontal carousel of poster + excerpt ──── */
     .section-picks {
         padding: 3rem 0;
     }
@@ -263,26 +268,18 @@
     }
 
     .picks-grid .film-card {
-        flex: 0 0 78vw;
-        max-width: 300px;
+        flex: 0 0 62vw;
+        max-width: 260px;
         scroll-snap-align: start;
         border: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
     }
 
-    .film-card-excerpt {
+    /* .film-card-vis keeps its natural 3/4 aspect ratio — no height override */
+
+    .film-card-body {
         display: none;
-    }
-
-    .film-card-vis {
-        height: 120px;
-    }
-
-    .film-year-ghost {
-        font-size: 4.5rem;
-    }
-
-    .film-card-rating {
-        gap: 0.25rem;
     }
 
     .section-picks::after {
@@ -506,6 +503,18 @@
              (bars only, no radar) · Other reviews
        Hide: Sidebar · Radar · Facts panel
        ════════════════════════════════════════════ */
+
+    /* Show the poster on mobile, keep the facts panel hidden. */
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-side {
+        width: 220px;
+        justify-self: start;
+        gap: 0;
+    }
 
     .hero-facts {
         display: none;

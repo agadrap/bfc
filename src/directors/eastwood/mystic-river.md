@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Crime", "Drama"]
   tagline: "A fine and simple story about crime, parental love, revenge and old scars."
+  poster: /assets/posters/14_mystic-river-2003-poster.png
 season:
   number: 14
   position: 2

@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Thriller", "Crime"]
   tagline: "You can't stop what's coming."
+  poster: /assets/posters/02_no-country-for-old-men-2007-poster.png
 season:
   number: 2
   position: 1

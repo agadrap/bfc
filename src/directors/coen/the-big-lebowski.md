@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Comedy", "Crime"]
   tagline: "Sometimes there's a man."
+  poster: /assets/posters/02_the-big-lebowski-1998-poster.png
 season:
   number: 2
   position: 2

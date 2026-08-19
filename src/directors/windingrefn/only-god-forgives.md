@@ -15,6 +15,7 @@ film:
   country: Thailand / Denmark
   genres: ["Crime", "Drama"]
   tagline: "Time to meet the devil."
+  poster: /assets/posters/10_only-god-forgives-2013-poster.png
 season:
   number: 10
   position: 2

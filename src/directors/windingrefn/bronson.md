@@ -14,6 +14,7 @@ film:
   country: UK
   genres: ["Biography", "Crime"]
   tagline: "I just want to be famous."
+  poster: /assets/posters/10_bronson-2008-poster.png
 season:
   number: 10
   position: 1

@@ -15,6 +15,7 @@ film:
   country: UK
   genres: ["Drama", "Romance"]
   tagline: "Some loves liberate. Others consume."
+  poster: /assets/posters/13_the-deep-blue-sea-2011-poster.png
 season:
   number: 13
   position: 1

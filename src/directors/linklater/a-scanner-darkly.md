@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Animation", "Sci-Fi"]
   tagline: "What does a scanner see into the head?"
+  poster: /assets/posters/07_a-scanner-darkly-2006-poster.png
 season:
   number: 7
   position: 1

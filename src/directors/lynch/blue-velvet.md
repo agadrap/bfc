@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Mystery", "Thriller"]
   tagline: "It's a strange world, isn't it?"
+  poster: /assets/posters/09_blue-velvet-1986-poster.png
 season:
   number: 9
   position: 2

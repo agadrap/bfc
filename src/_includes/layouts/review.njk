@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="/assets/css/review.css">
 {% endblock %}
 
+{% block headExtra %}
+{% include "partials/jsonld-review.njk" %}
+{% endblock %}
+
 {% block progressBar %}
 <div class="progress-bar" id="progressBar"></div>
 {% endblock %}
@@ -38,19 +42,31 @@
       <p class="hero-tagline">{{ film.tagline }}</p>
     </div>
 
-    <div class="hero-facts">
-      <div class="facts-header">Film Facts <div class="facts-dot"></div></div>
-      <div class="fact-row">
-        <div class="fact-cell"><label>Director</label><span>{{ dir.name }}</span></div>
-        <div class="fact-cell"><label>Year</label><span class="gold">{{ film.year }}</span></div>
-      </div>
-      <div class="fact-row">
-        <div class="fact-cell"><label>Runtime</label><span>{{ film.runtime }} min</span></div>
-        <div class="fact-cell"><label>Country</label><span>{{ film.country }}</span></div>
-      </div>
-      <div class="fact-row">
-        <div class="fact-cell"><label>Genre</label><span>{{ film.genres | join(" · ") }}</span></div>
-        <div class="fact-cell"><label>Club Rating</label><span class="gold">{{ ratings | totalRating }} / 15</span></div>
+    <div class="hero-side">
+      {% if film.poster %}
+      <a class="hero-poster-link" href="{{ film.poster }}" data-lightbox
+         aria-label="View {{ film.title }} poster at full size" target="_blank" rel="noopener">
+        <img class="hero-poster"
+             src="{{ film.poster }}"
+             alt="{{ film.title }} ({{ film.year }}), directed by {{ dir.name }} — Bayley Film Club poster"
+             width="896" height="1200">
+      </a>
+      {% endif %}
+
+      <div class="hero-facts">
+        <div class="facts-header">Film Facts <div class="facts-dot"></div></div>
+        <div class="fact-row">
+          <div class="fact-cell"><label>Director</label><span>{{ dir.name }}</span></div>
+          <div class="fact-cell"><label>Year</label><span class="gold">{{ film.year }}</span></div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-cell"><label>Runtime</label><span>{{ film.runtime }} min</span></div>
+          <div class="fact-cell"><label>Country</label><span>{{ film.country }}</span></div>
+        </div>
+        <div class="fact-row">
+          <div class="fact-cell"><label>Genre</label><span>{{ film.genres | join(" · ") }}</span></div>
+          <div class="fact-cell"><label>Club Rating</label><span class="gold">{{ ratings | totalRating }} / 15</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -123,8 +139,14 @@
         {% set filmSlug = f.slug %}
         {% set otherPermalink = "/directors/" + directorSlug + "/" + filmSlug + ".html" %}
         {% if otherPermalink != permalink %}
+        {% set otherPoster = filmPosters[directorSlug + "/" + filmSlug] %}
         <a href="{{ otherPermalink }}" class="other-card">
-          <div class="other-card-vis"><div class="other-card-year">{{ f.year }}</div></div>
+          <div class="other-card-vis">
+            {% if otherPoster %}
+            <img class="other-card-poster" src="{{ otherPoster }}" loading="lazy" width="896" height="1200"
+                 alt="{{ f.title }} ({{ f.year }}), directed by {{ dir.name }} — Bayley Film Club poster">
+            {% endif %}
+          </div>
           <div class="other-card-body">
             <div class="other-card-meta">{{ f.year }} · {{ f.genre | replace(" · ", " · ") }}</div>
             <div class="other-card-title">{{ f.title }}</div>
@@ -305,5 +327,49 @@
     const el = document.getElementById(id);
     if (el) sectionObs.observe(el);
   });
+
+  // POSTER LIGHTBOX — intercepts [data-lightbox] links, opens the image
+  // in an overlay. Without JS the link opens the raw poster in a new tab.
+  (function() {
+    const triggers = document.querySelectorAll('a[data-lightbox]');
+    if (!triggers.length) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'poster-lightbox';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Poster viewer');
+    overlay.hidden = true;
+    overlay.innerHTML = '<button class="poster-lightbox-close" aria-label="Close">✕</button><img class="poster-lightbox-img" alt="">';
+    document.body.appendChild(overlay);
+    const img = overlay.querySelector('.poster-lightbox-img');
+    const closeBtn = overlay.querySelector('.poster-lightbox-close');
+    let lastTrigger = null;
+
+    function open(src, alt) {
+      img.src = src;
+      img.alt = alt || '';
+      overlay.hidden = false;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function close() {
+      overlay.hidden = true;
+      img.src = '';
+      document.body.style.overflow = '';
+      if (lastTrigger) lastTrigger.focus();
+    }
+    triggers.forEach(a => {
+      a.addEventListener('click', (e) => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return; // let modified clicks through
+        e.preventDefault();
+        lastTrigger = a;
+        const innerImg = a.querySelector('img');
+        open(a.getAttribute('href'), innerImg ? innerImg.alt : '');
+      });
+    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay || e.target === closeBtn) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !overlay.hidden) close(); });
+  })();
 </script>
 {% endblock %}

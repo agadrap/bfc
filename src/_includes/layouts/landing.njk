@@ -4,6 +4,17 @@
 <link rel="stylesheet" href="/assets/css/landing.css">
 {% endblock %}
 
+{% block headExtra %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": site.name,
+  "url": site.url + "/",
+  "logo": site.url + "/assets/icons/icon-512.png",
+  "description": site.tagline
+} | dump | safe }}</script>
+{% endblock %}
+
 {% block content %}
 {{ content | safe }}
 {% endblock %}

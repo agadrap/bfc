@@ -15,6 +15,7 @@ film:
   country: UK / Belgium
   genres: ["Biography", "Drama"]
   tagline: "A full picture — with all the curves and sharp edges."
+  poster: /assets/posters/13_a-quiet-passion-2016-poster.png
 season:
   number: 13
   position: 2

@@ -15,6 +15,7 @@ film:
   country: UK
   genres: ["Drama"]
   tagline: "Grief doesn't excuse everything — but it explains a lot."
+  poster: /assets/posters/15_morvern-callar-2002-poster.png
 season:
   number: 15
   position: 2

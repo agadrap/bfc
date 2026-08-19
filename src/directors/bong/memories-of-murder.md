@@ -15,6 +15,7 @@ film:
   country: South Korea
   genres: ["Crime", "Drama"]
   tagline: "The truth doesn't always set you free."
+  poster: /assets/posters/01_memories-of-murder-2003-poster.png
 season:
   number: 1
   position: 1

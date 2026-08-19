@@ -2,6 +2,34 @@ const { execFileSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
+// Fail the build if any review references a film.poster that isn't on disk,
+// or forgets to set one. Reviews live only under src/directors/ — limbo/ is
+// staged/unpublished and is never scanned.
+function assertReviewPostersExist() {
+  const reviewsRoot = path.resolve("src/directors");
+  const problems = [];
+  for (const dir of fs.readdirSync(reviewsRoot, { withFileTypes: true })) {
+    if (!dir.isDirectory()) continue;
+    const sub = path.join(reviewsRoot, dir.name);
+    for (const f of fs.readdirSync(sub)) {
+      if (!f.endsWith(".md")) continue;
+      const full = path.join(sub, f);
+      const src = fs.readFileSync(full, "utf8");
+      const fm = src.match(/^---\n([\s\S]*?)\n---/);
+      if (!fm) continue;
+      const m = fm[1].match(/^\s{2}poster:\s*(\S+)\s*$/m);
+      if (!m) { problems.push(`${full}: missing film.poster`); continue; }
+      const rel = m[1].replace(/^\/+/, "");
+      const abs = path.resolve("src", rel);
+      if (!fs.existsSync(abs)) problems.push(`${full}: poster not on disk → ${m[1]}`);
+    }
+  }
+  if (problems.length) {
+    throw new Error("Poster check failed:\n  " + problems.join("\n  "));
+  }
+}
+assertReviewPostersExist();
+
 const gitDateCache = new Map();
 function gitLastModified(inputPath) {
   if (!inputPath) return null;
@@ -107,11 +135,43 @@ function maxGitDate(paths) {
 // review edit — not the template's own mtime.
 const RANKING_URLS = new Set(["/rankings/films/", "/rankings/directors/"]);
 
+// Build a { "directorSlug/filmSlug": posterPath } lookup by scanning review
+// frontmatter. Consumed as `filmPosters` global data in archive/index templates
+// where the poster isn't already resolvable from the current page's own data.
+function buildPosterLookup() {
+  const out = {};
+  const root = path.resolve("src/directors");
+  for (const dir of fs.readdirSync(root, { withFileTypes: true })) {
+    if (!dir.isDirectory()) continue;
+    const sub = path.join(root, dir.name);
+    for (const f of fs.readdirSync(sub)) {
+      if (!f.endsWith(".md")) continue;
+      const src = fs.readFileSync(path.join(sub, f), "utf8");
+      const fm = src.match(/^---\n([\s\S]*?)\n---/);
+      if (!fm) continue;
+      const slugM = fm[1].match(/^directorSlug:\s*(\S+)\s*$/m);
+      const posterM = fm[1].match(/^\s{2}poster:\s*(\S+)\s*$/m);
+      if (!slugM || !posterM) continue;
+      const stem = f.replace(/\.md$/, "");
+      out[`${slugM[1]}/${stem}`] = posterM[1];
+    }
+  }
+  return out;
+}
+
 module.exports = function(eleventyConfig) {
   // Pass through static assets
   eleventyConfig.addPassthroughCopy("src/assets/css");
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy("src/assets/posters");
+  eleventyConfig.addPassthroughCopy("src/assets/og");
+  eleventyConfig.addPassthroughCopy("src/assets/icons");
+  // Also emit favicon.ico at site root — browsers/crawlers hit /favicon.ico
+  // directly regardless of <link> tags.
+  eleventyConfig.addPassthroughCopy({ "src/assets/icons/favicon.ico": "favicon.ico" });
+
+  eleventyConfig.addGlobalData("filmPosters", buildPosterLookup);
 
   // Watch for changes
   eleventyConfig.addWatchTarget("src/assets/");

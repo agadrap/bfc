@@ -15,6 +15,7 @@ film:
   country: Poland / France
   genres: ["Drama", "War"]
   tagline: "A story so easily interpreted and beautiful that it becomes personal."
+  poster: /assets/posters/06_the-pianist-2002-poster.png
 season:
   number: 6
   position: 1

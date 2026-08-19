@@ -41,8 +41,17 @@ body {
   background: var(--black);
   color: var(--white);
   font-family: 'Space Mono', monospace;
-  cursor: crosshair;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M12 2L22 12L12 22L2 12Z' fill='none' stroke='%23e8189a' stroke-width='1.5'/><circle cx='12' cy='12' r='1.6' fill='%23e8189a'/></svg>") 12 12, crosshair;
   overflow-x: hidden;
+}
+
+/* On-brand pointer for anything clickable — filled magenta diamond with a
+   near-black dot in the middle, so the cursor still reads as the same shape
+   as the ambient one but signals "actionable". */
+a, button, [role="button"], summary,
+input[type="submit"], input[type="button"], input[type="reset"],
+label[for], select {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M12 2L22 12L12 22L2 12Z' fill='%23e8189a'/><circle cx='12' cy='12' r='2.6' fill='%2306060a'/></svg>") 12 12, pointer;
 }
 
 /* ── GRAIN OVERLAY ─────────────────────────────────────── */
@@ -132,6 +141,16 @@ nav.site-nav {
   letter-spacing: 0.12em;
   color: var(--white);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.nav-mark {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  display: block;
 }
 
 .nav-logo em {
@@ -508,7 +527,7 @@ footer.site-footer {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   text-decoration: none;
-  cursor: crosshair;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M12 2L22 12L12 22L2 12Z' fill='none' stroke='%23e8189a' stroke-width='1.5'/><circle cx='12' cy='12' r='1.6' fill='%23e8189a'/></svg>") 12 12, crosshair;
   transition: all 0.25s;
   display: inline-block;
 }
@@ -577,7 +596,7 @@ footer.site-footer {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted2);
-  cursor: crosshair;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M12 2L22 12L12 22L2 12Z' fill='none' stroke='%23e8189a' stroke-width='1.5'/><circle cx='12' cy='12' r='1.6' fill='%23e8189a'/></svg>") 12 12, crosshair;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -771,7 +790,7 @@ footer.site-footer {
   gap: 4px;
   background: none;
   border: none;
-  cursor: crosshair;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M12 2L22 12L12 22L2 12Z' fill='none' stroke='%23e8189a' stroke-width='1.5'/><circle cx='12' cy='12' r='1.6' fill='%23e8189a'/></svg>") 12 12, crosshair;
   padding: 0.5rem;
 }
 

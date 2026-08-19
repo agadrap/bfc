@@ -15,6 +15,7 @@ film:
   country: Denmark
   genres: ["Drama", "Comedy"]
   tagline: "Finding your inner idiot is harder than it sounds."
+  poster: /assets/posters/08_the-idiots-1998-poster.png
 season:
   number: 8
   position: 2

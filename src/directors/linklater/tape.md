@@ -14,6 +14,7 @@ film:
   country: USA
   genres: ["Drama", "Thriller"]
   tagline: "Everything said in this room stays in this room."
+  poster: /assets/posters/07_tape-2001-poster.png
 season:
   number: 7
   position: 2

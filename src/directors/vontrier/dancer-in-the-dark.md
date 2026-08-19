@@ -15,6 +15,7 @@ film:
   country: Denmark
   genres: ["Musical", "Drama"]
   tagline: "In musicals, nothing dreadful ever happens."
+  poster: /assets/posters/08_dancer-in-the-dark-2000-poster.png
 season:
   number: 8
   position: 3

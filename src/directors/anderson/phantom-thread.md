@@ -15,6 +15,7 @@ film:
   country: USA
   genres: ["Drama", "Romance"]
   tagline: "Wherever you go, I will follow."
+  poster: /assets/posters/05_phantom-thread-2017-poster.png
 season:
   number: 5
   position: 2

@@ -137,16 +137,88 @@
   animation: fadeUp 0.8s ease 0.45s forwards;
 }
 
-/* HERO RIGHT — film facts panel */
+/* HERO RIGHT — poster stacked above film facts panel */
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-self: end;
+  width: 340px;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.55s forwards;
+}
+
+.hero-poster-link {
+  display: block;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='12' cy='12' r='8' fill='none' stroke='%23e8189a' stroke-width='2'/><line x1='9' y1='12' x2='15' y2='12' stroke='%23e8189a' stroke-width='2' stroke-linecap='round'/><line x1='12' y1='9' x2='12' y2='15' stroke='%23e8189a' stroke-width='2' stroke-linecap='round'/><line x1='18' y1='18' x2='24' y2='24' stroke='%23e8189a' stroke-width='2.5' stroke-linecap='round'/></svg>") 12 12, zoom-in;
+  outline-offset: 4px;
+}
+
+.hero-poster {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.hero-poster-link:hover .hero-poster { transform: scale(1.015); }
+
+/* ── POSTER LIGHTBOX ────────────────────────────────── */
+.poster-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(6, 6, 10, 0.94);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.poster-lightbox[hidden] { display: none; }
+
+.poster-lightbox-img {
+  max-width: min(100%, 900px);
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.poster-lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--white);
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.poster-lightbox-close:hover {
+  background: var(--panel);
+  border-color: var(--magenta);
+  color: var(--magenta);
+}
+
 .hero-facts {
   background: var(--panel);
   border: 1px solid var(--border);
-  min-width: 240px;
   position: relative;
   overflow: hidden;
-  opacity: 0;
-  animation: fadeIn 0.8s ease 0.55s forwards;
-  align-self: end;
 }
 
 .hero-facts::before {
@@ -627,7 +699,7 @@
 .other-card:hover::after { transform: scaleX(1); }
 
 .other-card-vis {
-  height: 80px;
+  aspect-ratio: 3 / 4;
   background: linear-gradient(160deg, #180810, #280d1e);
   display: flex;
   align-items: center;
@@ -636,15 +708,17 @@
   overflow: hidden;
 }
 
-.other-card-year {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem;
-  color: rgba(232,24,154,0.12);
-  user-select: none;
-  transition: transform 0.3s;
+.other-card-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
 }
 
-.other-card:hover .other-card-year { transform: scale(1.1); }
+.other-card:hover .other-card-poster { transform: scale(1.03); }
 
 .other-card-body {
   padding: 1.2rem;

@@ -34,24 +34,45 @@
   {% endif %}
   <meta name="description" content="{{ metaDesc }}">
 
-  {# Open Graph + Twitter #}
+  {# Open Graph + Twitter — per-film card when this is a review, otherwise
+     the shared site image. Card slug is derived from film.poster's filename
+     (e.g. "15_ratcatcher-1999-poster.png" → "ratcatcher-1999"). #}
   {% set ogType = "article" if film else "website" %}
-  {% set ogImage = image or "/assets/images/bayley.jpg" %}
+  {% if film and film.poster %}
+    {% set posterStem = film.poster | replace("/assets/posters/", "") | replace("-poster.png", "") %}
+    {% set cardSlug = posterStem.split("_") | last %}
+    {% set ogImage = "/assets/og/" + cardSlug + "-card.jpg" %}
+    {% set ogImageAlt = film.title + " (" + (film.year | string) + ") — reviewed at " + site.name %}
+  {% else %}
+    {% set ogImage = image or "/assets/images/bayley.jpg" %}
+    {% set ogImageAlt = site.name + " — " + site.tagline %}
+  {% endif %}
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:type" content="{{ ogType }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:title" content="{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}">
   <meta property="og:description" content="{{ metaDesc }}">
   <meta property="og:image" content="{{ site.url }}{{ ogImage }}">
+  {% if film and film.poster %}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  {% endif %}
+  <meta property="og:image:alt" content="{{ ogImageAlt }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}">
   <meta name="twitter:description" content="{{ metaDesc }}">
   <meta name="twitter:image" content="{{ site.url }}{{ ogImage }}">
+  <meta name="twitter:image:alt" content="{{ ogImageAlt }}">
 
-  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/icons/site.webmanifest">
+  <meta name="theme-color" content="#06060a">
   <link rel="stylesheet" href="/assets/css/global.css">
   {% block styles %}{% endblock %}
   <link rel="stylesheet" href="/assets/css/mobile.css">
+  {% block headExtra %}{% endblock %}
 </head>
 <body>
 

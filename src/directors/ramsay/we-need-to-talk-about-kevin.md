@@ -15,6 +15,7 @@ film:
   country: UK
   genres: ["Drama", "Thriller"]
   tagline: "Not every mother loves easily. Not every child is easy to love."
+  poster: /assets/posters/15_we-need-to-talk-about-kevin-2011-poster.png
 season:
   number: 15
   position: 3

@@ -15,6 +15,7 @@ film:
   country: Denmark
   genres: ["Drama", "Romance"]
   tagline: "The greatest gift is love."
+  poster: /assets/posters/08_breaking-the-waves-1996-poster.png
 season:
   number: 8
   position: 1

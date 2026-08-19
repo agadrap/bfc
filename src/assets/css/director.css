@@ -682,19 +682,17 @@ a.review-card {
 .review-card:nth-child(2) .review-card-vis { background: linear-gradient(160deg, #180810, #280d1e); }
 .review-card:nth-child(3) .review-card-vis { background: linear-gradient(160deg, #14100a, #221c08); }
 
-.review-vis-year {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 8rem;
-  line-height: 1;
-  user-select: none;
-  transition: transform 0.4s, opacity 0.4s;
+.review-vis-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
 }
 
-.review-card:nth-child(1) .review-vis-year { color: rgba(123,47,255,0.18); }
-.review-card:nth-child(2) .review-vis-year { color: rgba(232,24,154,0.15); }
-.review-card:nth-child(3) .review-vis-year { color: rgba(201,168,76,0.18); }
-
-.review-card:hover .review-vis-year { transform: scale(1.06); opacity: 0.85; }
+.review-card:hover .review-vis-poster { transform: scale(1.03); }
 
 .review-vis-badge {
   position: absolute;

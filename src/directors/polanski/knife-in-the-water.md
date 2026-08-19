@@ -15,6 +15,7 @@ film:
   country: Poland
   genres: ["Drama", "Thriller"]
   tagline: "Three people. One boat. One day."
+  poster: /assets/posters/06_knife-in-the-water-1962-poster.png
 season:
   number: 6
   position: 2

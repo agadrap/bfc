@@ -4,7 +4,8 @@
   "description": "A personal film criticism site built as a static site for GitHub Pages. Each season spotlights a single director — two or three film picks, full written reviews, and a custom 3-tier rating system.",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy",
+    "og": "node scripts/build-og-cards.mjs",
+    "build": "node scripts/build-og-cards.mjs && eleventy",
     "serve": "eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/agadrap/bfc#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "sharp": "^0.35.3"
   }
 }

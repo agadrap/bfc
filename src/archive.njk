@@ -105,7 +105,12 @@ permalink: /archive/
     <div class="season-films">
       {% for film in dir.filmography %}{% if film.pick %}
       {% set r = filmRatings[film.slug] %}
+      {% set poster = filmPosters[dir.slug + "/" + film.slug] %}
       <a href="/directors/{{ dir.slug }}/{{ film.slug }}.html" class="film-row" style="text-decoration:none;">
+        {% if poster %}
+        <img class="film-row-poster" src="{{ poster }}" loading="lazy" width="896" height="1200"
+             alt="{{ film.title }} ({{ film.year }}), directed by {{ dir.name }} — Bayley Film Club poster">
+        {% endif %}
         <span class="film-row-title">{{ film.title }}</span>
         <span class="film-row-meta">{{ film.year }} · {{ film.genre }}</span>
         <span class="film-row-dims">
