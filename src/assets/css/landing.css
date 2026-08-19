@@ -349,7 +349,6 @@
   background: none;
   border: 1px solid var(--border);
   color: var(--muted);
-  cursor: pointer;
   transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
@@ -620,7 +619,6 @@
   font-size: 0.65rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  cursor: crosshair;
   transition: all 0.25s;
   position: relative;
   overflow: hidden;
@@ -669,7 +667,6 @@
 .film-card {
   background: var(--panel);
   overflow: hidden;
-  cursor: crosshair;
   transition: all 0.35s;
   position: relative;
 }
@@ -834,7 +831,6 @@
 .dir-card {
   background: var(--dark);
   padding: 1.8rem 1.5rem;
-  cursor: crosshair;
   position: relative;
   overflow: hidden;
   transition: background 0.3s;

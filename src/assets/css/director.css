@@ -353,7 +353,6 @@
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  cursor: crosshair;
 }
 
 .axis-dot-inner {
@@ -497,7 +496,6 @@
 .tl-film {
   background: var(--panel);
   padding: 1.2rem 1rem;
-  cursor: crosshair;
   position: relative;
   transition: background 0.3s;
   overflow: visible;
@@ -507,7 +505,6 @@ a.tl-film {
   display: block;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
 }
 
 .tl-film::before {
@@ -604,7 +601,6 @@ a.tl-film {
 .tl-award {
   font-size: 0.6rem;
   line-height: 1;
-  cursor: default;
   position: relative;
   transition: transform 0.2s, filter 0.2s;
 }
@@ -654,7 +650,6 @@ a.tl-film {
   background: var(--panel);
   display: grid;
   grid-template-columns: clamp(160px, 22vw, 300px) 1fr;
-  cursor: crosshair;
   transition: background 0.3s;
   position: relative;
   overflow: hidden;
@@ -664,7 +659,6 @@ a.tl-film {
 a.review-card {
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
 }
 
 .review-card:hover { background: var(--panel2); }

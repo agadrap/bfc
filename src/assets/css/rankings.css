@@ -98,7 +98,6 @@
   background: none;
   border: 1px solid var(--border2);
   padding: 0.4rem 0.9rem;
-  cursor: crosshair;
   transition: all 0.2s;
 }
 

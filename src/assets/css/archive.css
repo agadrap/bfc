@@ -192,7 +192,6 @@
   border-bottom: 1px solid var(--border);
   color: inherit;
   transition: background 0.2s;
-  cursor: crosshair;
 }
 
 .film-row-poster {
