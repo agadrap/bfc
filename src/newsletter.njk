@@ -1,0 +1,81 @@
+---
+layout: layouts/page.njk
+title: "Newsletter"
+permalink: /newsletter/
+description: "The Bayley Film Club dispatch — one email a season, with the director, the picks and the ratings."
+breadcrumbs:
+  - text: Newsletter
+---
+
+<div class="np-wrap">
+
+  <!-- ═══ HEADER ═════════════════════════════════════════ -->
+  <section class="np-hero">
+    <div class="section-tag">
+      <div class="tag-line"></div>
+      <span class="tag-text">The Club Dispatch</span>
+    </div>
+    <h1 class="np-title">THE<br><em>DISPATCH</em></h1>
+    <p class="np-standfirst">
+      One email a season. A new director, two or three films, the reviews and the ratings —
+      and an open invitation to tell me I've got them wrong.
+    </p>
+  </section>
+
+  <!-- ═══ WHAT YOU GET ═══════════════════════════════════ -->
+  <section class="np-what">
+    <div class="section-tag">
+      <div class="tag-line"></div>
+      <span class="tag-text">What lands in your inbox</span>
+    </div>
+
+    <div class="np-grid">
+      <div class="np-item">
+        <div class="np-item-num">01</div>
+        <h3 class="np-item-title">The season</h3>
+        <p>Who the director is, why they were picked, and which films made the cut out of a whole filmography.</p>
+      </div>
+      <div class="np-item">
+        <div class="np-item-num">02</div>
+        <h3 class="np-item-title">The ratings</h3>
+        <p>Anticipation, Enjoyment and Retrospect, each out of five. Sometimes a beloved film scores badly. That's the interesting part.</p>
+      </div>
+      <div class="np-item">
+        <div class="np-item-num">03</div>
+        <h3 class="np-item-title">The argument</h3>
+        <p>A link to the reviews on Letterboxd, and a request to come and disagree in the comments.</p>
+      </div>
+    </div>
+
+    <p class="np-frequency">
+      {{ site.newsletter.frequency }} No sponsorships, no affiliate padding, no "5 films you MUST see".
+      Unsubscribe from any email in one click.
+    </p>
+  </section>
+
+  <!-- ═══ SIGNUP ═════════════════════════════════════════ -->
+  {% set nlEyebrow = "Join the club" %}
+  {% set nlHeading = "ONE SEASON,<br>ONE DIRECTOR,<br>ONE EMAIL." %}
+  {% set nlBlurb = "You'll get a confirmation email first — click the link in it and you're in. Nothing else happens until the next season lands." %}
+  {% include "partials/newsletter.njk" %}
+
+  <!-- ═══ PAST ISSUES ════════════════════════════════════ -->
+  {% if issues and issues.length %}
+  <section class="np-issues">
+    <div class="section-tag">
+      <div class="tag-line"></div>
+      <span class="tag-text">Past issues</span>
+    </div>
+    <div class="np-issue-list">
+      {% for issue in issues %}
+      <a href="{{ issue.url }}" class="np-issue" target="_blank" rel="noopener">
+        <span class="np-issue-season">Season {{ issue.season | pad(2, '0') }}</span>
+        <span class="np-issue-title">{{ issue.title }}</span>
+        <span class="np-issue-date">{{ issue.date }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+</div>

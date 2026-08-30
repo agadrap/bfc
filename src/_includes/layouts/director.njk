@@ -6,4 +6,9 @@
 
 {% block content %}
 {{ content | safe }}
+
+{% set nlEyebrow = "The Club Dispatch" %}
+{% set nlHeading = "MORE WHERE<br>THIS CAME FROM." %}
+{% set nlBlurb = "A new director every season, with the films picked, reviewed and rated. One email when each one lands — that's the whole arrangement." %}
+{% include "partials/newsletter.njk" %}
 {% endblock %}

@@ -1,0 +1,21 @@
+{#
+  Newsletter signup — one-line variant for the footer. Same Kit form,
+  same JS handler, no heading. Lives on every page via footer.njk.
+#}
+<div class="newsletter-slim">
+  <span class="newsletter-slim-label">New season, straight to your inbox</span>
+  <form class="newsletter-slim-form"
+        action="https://app.kit.com/forms/{{ site.newsletter.formId }}/subscriptions"
+        method="post"
+        data-newsletter-form>
+    <input class="newsletter-input newsletter-slim-input"
+           type="email"
+           name="email_address"
+           placeholder="you@example.com"
+           aria-label="Email address"
+           autocomplete="email"
+           required>
+    <button class="newsletter-btn newsletter-slim-btn" type="submit">Subscribe</button>
+    <p class="newsletter-status newsletter-slim-status" data-newsletter-status role="status" aria-live="polite"></p>
+  </form>
+</div>

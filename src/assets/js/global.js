@@ -206,3 +206,40 @@ function initRadar(svgId, scores, animateOnScroll) {
     animate(svgEl, scores, 900);
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   NEWSLETTER SIGNUP (Kit)
+   Progressive enhancement: without JS the form does a normal POST
+   to Kit and lands on Kit's own confirmation page. With JS we post
+   in the background and show an inline message instead.
+   ───────────────────────────────────────────────────────────── */
+document.querySelectorAll('[data-newsletter-form]').forEach((form) => {
+  const status = form.querySelector('[data-newsletter-status]');
+  const btn = form.querySelector('button[type="submit"]');
+  const original = btn ? btn.textContent : '';
+
+  form.addEventListener('submit', async (e) => {
+    if (form.action.indexOf('REPLACE_WITH') !== -1) return; // not wired up yet — let it fail loudly in dev
+    e.preventDefault();
+    if (status) { status.textContent = ''; status.classList.remove('is-error'); }
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { accept: 'application/json' }
+      });
+      if (!res.ok) throw new Error('bad status');
+      form.reset();
+      if (status) status.textContent = 'Check your inbox and confirm — see you at the next season.';
+      if (btn) btn.textContent = 'Subscribed ✓';
+    } catch (err) {
+      if (status) {
+        status.textContent = 'That did not go through. Try again in a moment?';
+        status.classList.add('is-error');
+      }
+      if (btn) { btn.disabled = false; btn.textContent = original; }
+    }
+  });
+});

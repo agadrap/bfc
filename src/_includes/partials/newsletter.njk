@@ -1,0 +1,42 @@
+{#
+  Newsletter signup — full block. Kit (kit.com) backed.
+  Form id lives in src/_data/site.json → newsletter.formId
+  Variables you can set before including:
+    nlEyebrow  — small label above the heading
+    nlHeading  — the big line (HTML allowed)
+    nlBlurb    — one sentence under it
+  No element ids in here — the slim variant may also be on the page.
+#}
+<section class="newsletter" id="newsletter">
+  <div class="newsletter-inner">
+    <div class="section-tag">
+      <div class="tag-line"></div>
+      <span class="tag-text">{{ nlEyebrow | default("The Club Dispatch") }}</span>
+    </div>
+
+    <h2 class="newsletter-heading">{{ nlHeading | default("ONE SEASON,<br>ONE DIRECTOR,<br>ONE EMAIL.") | safe }}</h2>
+
+    <p class="newsletter-blurb">
+      {{ nlBlurb | default("Every new season lands in your inbox — the director, the picks, the ratings, and the arguments we had about them. No spam, no filler, unsubscribe whenever.") }}
+    </p>
+
+    <form class="newsletter-form"
+          action="https://app.kit.com/forms/{{ site.newsletter.formId }}/subscriptions"
+          method="post"
+          data-newsletter-form>
+      <input class="newsletter-input"
+             type="email"
+             name="email_address"
+             placeholder="you@example.com"
+             aria-label="Email address"
+             autocomplete="email"
+             required>
+      <button class="newsletter-btn" type="submit">Join the club →</button>
+      <p class="newsletter-status" data-newsletter-status role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="newsletter-fineprint">
+      {{ site.newsletter.frequency | default("Roughly one email a month.") }} Powered by Kit.
+    </p>
+  </div>
+</section>

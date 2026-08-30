@@ -6,4 +6,9 @@
 
 {% block content %}
 {{ content | safe }}
+
+{% set nlEyebrow = "The Club Dispatch" %}
+{% set nlHeading = "STILL READING?" %}
+{% set nlBlurb = "Then you may as well get the next season by email. One a month, the director, the picks and the ratings — and somewhere to argue about them." %}
+{% include "partials/newsletter.njk" %}
 {% endblock %}
