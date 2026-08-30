@@ -105,15 +105,15 @@ it to agadrap@gmail.com**.
 
 For each film in the season:
 
-- **Star rating**: `stars = round((total / 15) * 5 * 2) / 2` gives a starting number —
-  **propose it, never assume it.** The club rating and the Letterboxd star are not the same
-  judgement: the /15 includes Anticipation, which measures how the film was approached, not
-  how good it is. Funny Games scores 8/15 (Anticipation 5, Enjoyment 1) and the formula says
-  2.5 stars, but it's rated ★★★½ on Letterboxd — a precise piece of filmmaking that wasn't
-  enjoyable. Mulholland Drive runs the other way: 10/15 formula says 3.5, actual is ★★½.
-  So: show the arithmetic, then ask whether it matches the real opinion, and check the
-  existing rating on letterboxd.com/dr_agnieszka before writing one that contradicts it.
-  (12/15 → 4 · 8/15 → 2.5 · 15/15 → 5 · 10/15 → 3.5 · 14/15 → 4.5)
+- **Star rating**: `stars = round((total / 15) * 5 * 2) / 2` gives the number, and it is
+  usually right — checked against all 10 reviews on letterboxd.com/dr_agnieszka, 8 match
+  exactly. **Propose it rather than assert it**, because the two deviations both run the
+  same way: upward, where a low Anticipation drags the club total below what the film
+  deserves. Funny Games is 8/15 (Anticipation 5, Enjoyment 1) → formula 2.5, actual ★★★½.
+  Only God Forgives is 11/15 → formula 3.5, actual ★★★★. So when Enjoyment is low but the
+  review is admiring, expect the star rating to sit half a point to a point above the
+  formula — flag it and ask.
+  (12/15 → 4 · 10/15 → 3.5 · 13/15 → 4.5 · 14/15 → 4.5 · 15/15 → 5)
 - **Short review**: 60–120 words. This is not a summary of the site review — it is the
   two or three best sentences of it, lifted and lightly stitched so they stand alone.
   Prefer the sentences that make a claim over the ones that describe the plot.

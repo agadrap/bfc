@@ -1012,6 +1012,7 @@ footer.site-footer {
 @media (max-width: 600px) {
   .newsletter { padding: 3.5rem 1.25rem; }
   .newsletter-form { flex-direction: column; }
+  .newsletter-input { flex: 0 0 auto; width: 100%; }
   .newsletter-btn { width: 100%; }
 }
 
@@ -1059,6 +1060,7 @@ footer.site-footer {
 
 @media (max-width: 600px) {
   .newsletter-slim-form { flex-direction: column; }
+  .newsletter-slim-input { flex: 0 0 auto; width: 100%; }
   .newsletter-slim-btn { width: 100%; }
 }
 
