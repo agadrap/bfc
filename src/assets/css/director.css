@@ -670,6 +670,7 @@ a.review-card {
   justify-content: center;
   overflow: hidden;
   min-height: 220px;
+  padding: 1rem;
 }
 
 .review-card:nth-child(1) .review-card-vis { background: linear-gradient(160deg, #100820, #1c0f35); }
@@ -677,11 +678,10 @@ a.review-card {
 .review-card:nth-child(3) .review-card-vis { background: linear-gradient(160deg, #14100a, #221c08); }
 
 .review-vis-poster {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.4s;
 }

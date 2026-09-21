@@ -475,7 +475,8 @@
     }
 
     .review-card-vis {
-        min-height: 90px;
+        min-height: 320px;
+        padding: 1rem;
         border-right: none !important;
         border-bottom: 1px solid var(--border);
     }
