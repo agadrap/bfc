@@ -488,7 +488,7 @@
     "slug": "tarantino",
     "ghostLetter": "T",
     "season": 16,
-    "isCurrent": true,
+    "isCurrent": false,
     "born": "Mar 27, 1963",
     "origin": "Knoxville, USA",
     "nationality": "American",
@@ -509,6 +509,33 @@
       { "year": 2019, "title": "Once Upon a Time in Hollywood", "genre": "Comedy · Drama", "pick": false, "awards": [{ "type": "oscar", "status": "won" }, { "type": "bafta", "status": "won" }, { "type": "globe", "status": "won" }, { "type": "palme", "status": "nom" }] }
     ],
     "picks": ["reservoir-dogs", "django-unchained"]
+  },
+  "payne": {
+    "name": "Alexander Payne",
+    "firstName": "Alexander",
+    "lastName": "Payne",
+    "slug": "payne",
+    "ghostLetter": "P",
+    "season": 17,
+    "isCurrent": true,
+    "born": "Feb 10, 1961",
+    "origin": "Omaha, USA",
+    "nationality": "American",
+    "active": "1996 – Present",
+    "features": 8,
+    "bio": "Alexander Payne has spent three decades chronicling the particular disappointments of ordinary American life — actuaries, teachers, wine enthusiasts, men who did everything right and still ended up wondering what it was for. Working out of Omaha as often as Hollywood, active since his 1996 debut, he specialises in a very specific tone: comedy that never stops being sad, and sadness that never stops being funny. His characters are rarely likeable in any conventional sense — vain, self-deceiving, quietly cruel — and he is unusually patient with them anyway, willing to sit with a person's worst qualities long enough to find the loneliness underneath. Satire, in his hands, is less a weapon than a diagnosis.",
+    "themes": ["Middle-Class Disillusionment", "Satire", "Personal Transformation", "American Malaise", "Bittersweet Comedy"],
+    "filmography": [
+      { "year": 1996, "title": "Citizen Ruth", "genre": "Comedy · Drama", "pick": true, "slug": "citizen-ruth" },
+      { "year": 1999, "title": "Election", "genre": "Comedy · Drama", "pick": false, "awards": [{ "type": "oscar", "status": "nom" }] },
+      { "year": 2002, "title": "About Schmidt", "genre": "Comedy · Drama", "pick": true, "slug": "about-schmidt", "awards": [{ "type": "oscar", "status": "nom" }, { "type": "globe", "status": "won" }] },
+      { "year": 2004, "title": "Sideways", "genre": "Comedy · Drama", "pick": false, "awards": [{ "type": "oscar", "status": "won" }, { "type": "globe", "status": "won" }, { "type": "bafta", "status": "won" }] },
+      { "year": 2011, "title": "The Descendants", "genre": "Comedy · Drama", "pick": false, "awards": [{ "type": "oscar", "status": "won" }, { "type": "globe", "status": "won" }, { "type": "bafta", "status": "nom" }] },
+      { "year": 2013, "title": "Nebraska", "genre": "Comedy · Drama", "pick": false, "awards": [{ "type": "oscar", "status": "nom" }, { "type": "palme", "status": "nom" }, { "type": "bafta", "status": "nom" }] },
+      { "year": 2017, "title": "Downsizing", "genre": "Comedy · Sci-Fi", "pick": false },
+      { "year": 2023, "title": "The Holdovers", "genre": "Comedy · Drama", "pick": false, "awards": [{ "type": "oscar", "status": "won" }, { "type": "globe", "status": "won" }, { "type": "bafta", "status": "nom" }] }
+    ],
+    "picks": ["citizen-ruth", "about-schmidt"]
   },
   "archive": [
     {
