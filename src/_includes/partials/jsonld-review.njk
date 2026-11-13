@@ -17,13 +17,13 @@
     "@type": "Movie",
     "name": film.title,
     "image": site.url + film.poster,
-    "dateCreated": film.year | string,
+    "datePublished": film.year | string,
     "director": { "@type": "Person", "name": dir.name },
     "genre": film.genres,
     "countryOfOrigin": countryJson
   },
-  "author": { "@type": "Organization", "name": site.name, "url": site.url + "/" },
-  "publisher": { "@type": "Organization", "name": site.name },
+  "author": { "@type": "Person", "name": site.authorName },
+  "publisher": { "@type": "Organization", "name": site.name, "url": site.url + "/" },
   "reviewRating": {
     "@type": "Rating",
     "ratingValue": ratings | totalRating,

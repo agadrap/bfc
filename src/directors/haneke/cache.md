@@ -1,6 +1,8 @@
 ---
 layout: layouts/review.njk
 title: "CACHÉ"
+verdict: "Not Enjoyable. Impossible to Shake."
+description: "No score, no resolution, no comfort. Haneke films you watching, then makes you wonder what you're hiding. The discomfort is entirely the point."
 permalink: /directors/haneke/cache.html
 directorSlug: haneke
 hero_ghost: "CACHÉ"

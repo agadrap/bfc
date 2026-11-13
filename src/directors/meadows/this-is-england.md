@@ -1,6 +1,8 @@
 ---
 layout: layouts/review.njk
 title: "THIS IS ENGLAND"
+verdict: "Two Sides of a Subculture"
+description: "Meadows traces the original skinhead movement — inclusive, creative, diverse — before Combo arrives and splits everything in two. More nuanced than the stereotype."
 permalink: /directors/meadows/this-is-england.html
 directorSlug: meadows
 hero_ghost: "ENGLAND"

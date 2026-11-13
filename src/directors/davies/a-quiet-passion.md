@@ -1,6 +1,8 @@
 ---
 layout: layouts/review.njk
 title: "A QUIET PASSION"
+verdict: "A Portrait That Sends You to Poetry"
+description: "Davies shows Emily Dickinson whole — her stubbornness, her wit, the price of independence. Cynthia Nixon is extraordinary. It sent me to a bookstore."
 permalink: /directors/davies/a-quiet-passion.html
 directorSlug: davies
 hero_ghost: "PASSION"

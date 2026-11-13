@@ -1,6 +1,8 @@
 ---
 layout: layouts/review.njk
 title: "MEMORIES OF MURDER"
+verdict: "The Case Doesn't Close. That's the Point."
+description: "Bong's real-killer procedural isn't about catching the culprit — it's about the men left behind when justice never arrives. That final gaze destroys you."
 permalink: /directors/bong/memories-of-murder.html
 directorSlug: bong
 hero_ghost: "MEMORIES"

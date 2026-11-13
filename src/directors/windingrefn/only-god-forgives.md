@@ -1,6 +1,8 @@
 ---
 layout: layouts/review.njk
 title: "ONLY GOD FORGIVES"
+verdict: "Demanding, Divisive, and Worth the Effort"
+description: "Gosling speaks seventeen lines. The film works through light, symbol, and silence. Demanding — but if you meet it on its own terms, it rewards."
 permalink: /directors/refn/only-god-forgives.html
 directorSlug: refn
 hero_ghost: "GOD"

@@ -1,6 +1,8 @@
 ---
 layout: layouts/review.njk
 title: "MOTHER"
+verdict: "Bong at His Most Devastating"
+description: "Kim Hye-ja makes the mother sympathetic even as her actions become unforgivable. The dancing bookends the film — and by the end, it's an act of survival."
 permalink: /directors/bong/mother.html
 directorSlug: bong
 hero_ghost: "MOTHER"

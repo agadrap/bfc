@@ -7,9 +7,20 @@
   {# Resolve director data if the page front-matter names one #}
   {% if directorSlug %}{% set dir = directors[directorSlug] %}{% endif %}
 
-  {# Page title: reviews use film.title (properly cased), not the ALL-CAPS `title` #}
-  {% set pageTitle = film.title if film else title %}
-  <title>{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}</title>
+  {# Page title:
+     review  → "<Film> (<year>) Review[: <verdict>] | Bayley Film Club"
+     director → "<Director> Films Ranked: Every Film Reviewed | Bayley Film Club"
+     other   → "<title> — The Bayley Film Club" (unchanged) #}
+  {% if film %}
+    {% set _rt = film.title + " (" + (film.year | string) + ") Review" %}
+    {% if verdict %}{% set _rt = _rt + ": " + verdict %}{% endif %}
+    {% set fullTitle = _rt + " | " + site.shortName %}
+  {% elif directorSlug %}
+    {% set fullTitle = dir.name + " Films Ranked: Every Film Reviewed | " + site.shortName %}
+  {% else %}
+    {% set fullTitle = (title + " — " + site.name) if title else site.name %}
+  {% endif %}
+  <title>{{ fullTitle }}</title>
 
   {# Canonical — matches sitemap.njk: {{ site.url }}{{ page.url }} #}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
@@ -50,7 +61,7 @@
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:type" content="{{ ogType }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  <meta property="og:title" content="{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}">
+  <meta property="og:title" content="{{ fullTitle }}">
   <meta property="og:description" content="{{ metaDesc }}">
   <meta property="og:image" content="{{ site.url }}{{ ogImage }}">
   {% if film and film.poster %}
@@ -59,7 +70,7 @@
   {% endif %}
   <meta property="og:image:alt" content="{{ ogImageAlt }}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{% if pageTitle %}{{ pageTitle }} — {% endif %}{{ site.name }}">
+  <meta name="twitter:title" content="{{ fullTitle }}">
   <meta name="twitter:description" content="{{ metaDesc }}">
   <meta name="twitter:image" content="{{ site.url }}{{ ogImage }}">
   <meta name="twitter:image:alt" content="{{ ogImageAlt }}">
